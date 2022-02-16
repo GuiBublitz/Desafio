@@ -13,7 +13,7 @@
         <!--Html first question-->
         <div class="wraper">
             <form id="form-question-one">
-                <h1>Questão 1</h1>
+                <h1>Questão 1<br/><span style="color: red; font-size: 18px;">(obs: Colocar um número maior que 300 pode causar lentidão na sua máquina)</span></h1>
                 <input id="input-number-question-one" type="number"/>
                 <input id="btn-question-one" type="submit"/>
                 <textarea id="txt-question-one"></textarea>
@@ -21,7 +21,39 @@
         </div>
         <!--End - first question html-->
 
-
+        <!--Html second question-->
+        <div class="wraper">
+            <h1 style="text-align: center; margin: 0 0 20px 0;">Questão 2</h1>
+            <div class="panel">
+                <form id="form-question-two">
+                    <h3>Digite os dados<br/> de cadastro</h3>
+                    <div style="display: flex; justify-content: center;">
+                        <label>Nome:</label>
+                        <input id="name-form-question-two" type="name" placeholder="nome"/>
+                    </div>
+                    <div style="display: flex;justify-content: center;">
+                        <label>Senha:</label>
+                        <input id="password-form-question-two" type="password"/>
+                    </div>
+                    <ul style="margin: 0 auto; list-style: none; font-size: 13px; display: non;">
+                        <li id="">min 6 caracteres</li>
+                        <li id="">min 1 digito</li>
+                        <li id="">min 1 letra em minúsculo</li>
+                        <li id="">min 1 letra em maiúsculo</li>
+                        <li id="">min 1 caractere especial</li>
+                    </ul>
+                    <input id="btn-form-question-two" type="submit"/>
+                </form>
+                <div class="midle-border"></div>
+                <div id="register-data">
+                    <ul class="item-register-data">
+                        <li>Nome: Fulano</li>
+                        <li>Password: 123456789</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--End- second question html-->
     </main>
     
 
