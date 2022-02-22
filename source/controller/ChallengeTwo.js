@@ -1,6 +1,14 @@
 class ChallengeTwo {
 
     constructor(){
+        //labels
+        this.minCharactersLabel = document.getElementById("min-characters");
+        this.minNumbersLabel = document.getElementById("min-mumbers");
+        this.minLowercaseLabel = document.getElementById("min-lowercase-letters");
+        this.minUppercaseLabel = document.getElementById("min-uppercase-letters");
+        this.minSpecialCharactersLabel = document.getElementById("min-special-character");
+        
+        this.divPanel = document.querySelector('.item-register-data');
         this.form = document.getElementById('form-question-two');
         this.name = document.getElementById('name-form-question-two');
         this.password = document.getElementById('password-form-question-two');
@@ -14,8 +22,24 @@ class ChallengeTwo {
     initEvents(){
         this.form.addEventListener('submit', (e)=>{
             e.preventDefault();
-
+            if(this.validatePassword(this.password.value)) this.writeOnPanel();
         })
+    }
+
+    writeOnPanel(){
+        let liName = document.createElement('li');
+        let liPassword = document.createElement('li');
+        let ul = document.createElement('ul');
+        liName.textContent = ` 
+            Nome: ${this.name.value} 
+        `
+        liPassword.textContent = ` 
+            Senha: ${this.password.value}
+        `
+        ul.appendChild(liName);
+        ul.appendChild(liPassword);
+        ul.setAttribute('style', 'border-bottom: 2px solid black; padding: 5px;');
+        this.divPanel.appendChild(ul);
     }
 
     validatePassword(password){
@@ -34,8 +58,62 @@ class ChallengeTwo {
         return true;
     }
 
-    updateScreen(requirements){
-        
+    updateScreen(answers){
+        (answers.minCharacters) ? this.toggleClass('minCharacters', true) : this.toggleClass('minCharacters', false);
+        (answers.minNumbers) ? this.toggleClass('minNumbers', true) : this.toggleClass('minNumbers', false);
+        (answers.minUppercaseLetters) ? this.toggleClass('minUppercaseLetters', true) : this.toggleClass('minUppercaseLetters', false);
+        (answers.minLowercaseLetters) ? this.toggleClass('minLowercaseLetters', true) : this.toggleClass('minLowercaseLetters', false);
+        (answers.minSpecialCharacter) ? this.toggleClass('minSpecialCharacter', true) : this.toggleClass('minSpecialCharacter', false);
+    }
+
+    toggleClass(item, boolean){
+        switch (item){
+            case 'minCharacters':
+                if(boolean){
+                    this.minCharactersLabel.classList.add('done');
+                    this.minCharactersLabel.classList.remove('required');
+                } else {
+                    this.minCharactersLabel.classList.remove('done');
+                    this.minCharactersLabel.classList.add('required');
+                }
+                break;
+            case 'minNumbers':
+                if(boolean){
+                    this.minNumbersLabel.classList.add('done');
+                    this.minNumbersLabel.classList.remove('required');
+                } else {
+                    this.minNumbersLabel.classList.remove('done');
+                    this.minNumbersLabel.classList.add('required');
+                }
+                break;
+            case 'minUppercaseLetters':
+                if(boolean){
+                    this.minUppercaseLabel.classList.add('done');
+                    this.minUppercaseLabel.classList.remove('required');
+                } else {
+                    this.minUppercaseLabel.classList.remove('done');
+                    this.minUppercaseLabel.classList.add('required');
+                }    
+                break;
+            case 'minLowercaseLetters':
+                    if(boolean){
+                        this.minLowercaseLabel.classList.add('done');
+                        this.minLowercaseLabel.classList.remove('required');
+                    } else { 
+                        this.minLowercaseLabel.classList.remove('done');
+                        this.minLowercaseLabel.classList.add('required');
+                    }
+                break;
+            case 'minSpecialCharacter':
+                if(boolean){
+                    this.minSpecialCharactersLabel.classList.add('done');
+                    this.minSpecialCharactersLabel.classList.remove('required');
+                } else { 
+                    this.minSpecialCharactersLabel.classList.remove('done');
+                    this.minSpecialCharactersLabel.classList.add('required');
+                }
+                break;
+        }
     }
 
     minCharacters(word, min = 6){
